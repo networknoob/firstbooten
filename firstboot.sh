@@ -6,7 +6,7 @@ NC='\033[0m'
 read -p "Please enter the hostname for this system:" hostname
 echo -e "\nThe hostname for this system will be: ${BLUE}$hostname\n${NC} "
 read -p "Please enter the IP address of this system:" ip
-echo $hostname > ./hostname
+echo $hostname > /etc/hostname 
 echo Checking if $ip is already in use...
 if ping -c 1 $ip 1>/dev/null 2>/dev/null
 then
@@ -24,6 +24,6 @@ allow-hotplug ens18
 iface ens18 inet static
 address $ip 
 gateway 10.0.0.1
-netmask 255.255.255.0" > ./ipconf
+netmask 255.255.255.0" > /etc/network/interfaces 
 fi
 
